@@ -1,0 +1,50 @@
+## .NET / Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/packages/
+packages/
+!**/packages/build/
+
+# EF Core
+# Keep migrations but exclude snapshots? No, keep all.
+
+# Secrets / Environment
+appsettings.Production.json
+appsettings.Secrets.json
+*.env
+.env
+.env.local
+secrets.json
+**/UserSecrets/
+
+# Build outputs
+publish/
+dist/
+wwwroot/uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Test results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml

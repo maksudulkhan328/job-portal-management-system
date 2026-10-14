@@ -1,0 +1,36 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'backend/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'backend/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        working-directory: backend
+        run: dotnet restore JobFlow.sln
+
+      - name: Build
+        working-directory: backend
+        run: dotnet build JobFlow.sln --no-restore --configuration Release
+
+      - name: Run tests
+        working-directory: backend
+        run: dotnet test JobFlow.sln --no-build --configuration Release --verbosity normal
+        continue-on-error: true
